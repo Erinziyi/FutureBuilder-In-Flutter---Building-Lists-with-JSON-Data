@@ -113,19 +113,77 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+
+    final profile = Hero (
+      tag: 'hero',
+      child: Padding(padding: EdgeInsets.all(16.0),
+        child: CircleAvatar(
+          radius: 72.0,
+          backgroundColor: Colors.transparent,
+          backgroundImage: NetworkImage(user.picture),
+        ),
+      ),
+      
+    );
+
+
+    final name = Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Text(
+        user.name,
+        style: TextStyle(fontSize: 28.0, color: Colors.black),
+      ),
+
+
+    );
+
+    final email = Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Text(
+        user.email,
+        style: TextStyle(fontSize: 18.0, color: Colors.black),
+      ),
+
+
+    );
+
+    final about = Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Text(
+        user.about,
+        style: TextStyle(fontSize: 14.0, color: Colors.black),
+      ),
+    );
+
+    final body = Container(
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.all(28.0),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [
+          Colors.orangeAccent,
+          Colors.yellow,
+        ]),
+      ),
+      child: Column(
+        children: <Widget>[profile, name,email, about],
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(user.name),
-
-
       ),
-
+      body: body,
     );
   }
 }
 
 
-//object
+
+
+//data
 class User {
   final int index;
   final String about;
